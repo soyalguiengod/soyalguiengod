@@ -1,20 +1,33 @@
-
-/* Este es el diseño del fondo */
-.background-blur {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-image: url('bgdirt.jpeg');
-    background-repeat: repeat;
-    background-size: 64px;
-    filter: blur(5px);
-    transform: scale(1.1);
-}
-
 body {
     margin: 0;
     padding: 0;
+    /* Color de respaldo por si falla la imagen */
+    background-color: #000; 
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.background-blur {
+    position: fixed;
+    top: -10px;
+    left: -10px;
+    /* Un poco más grande para que el blur no deje bordes blancos */
+    width: calc(100% + 20px); 
+    height: calc(100% + 20px);
+    z-index: -1;
+
+    /* CAPA 1: Un degradado negro arriba para que sea más oscuro */
+    /* CAPA 2: Tu imagen de tierra */
+    background: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+        url('bgdirt.jpeg');
+
+    background-repeat: repeat;
+    background-size: 80px; /* Tamaño medio para que se vea la textura */
+    
+    /* El efecto borroso de tu amigo */
+    filter: blur(6px); 
+    
+    /* Para que los píxeles no se vean suavizados feo */
+    image-rendering: pixelated;
 }
